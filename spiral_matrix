@@ -1,0 +1,105 @@
+include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <time.h>
+#include <Windows.h>
+#include <malloc.h>
+using namespace std;
+const int t1 = 10, t2 = 10;
+
+void spir(int a[t1][t2], int* pi, int f);
+void show(int A[t1][t2]);
+
+int main(void)
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	
+    //Оголошення змінних і масивів//Declaring variables and arrays
+    int* pi; int n;
+    int a[t1][t2] = {  };
+    a[4][4] = { 1 };
+    //Запит до користувача і сканування відповіді//Query the user and scan the response
+    printf("Введіть к-сть значень вектора b:");
+    scanf_s("%d", &n);
+    //Оголошення динамічного одновимірного масиву розміром n//Announcement of a dynamic one - dimensional array of size n
+    pi = (int*)malloc(n * sizeof(int));
+
+    //Заповнення масиву pi значеннями від 1 до n//Filling the array pi with values from 1 to n
+    if (pi != 0)
+    {
+        for (int i = 1; i <= n; i++)
+            pi[i] = i ;
+    }
+    //Заповнюємо матрицю від цетру по спіралі за допомогою функції spir() і виводимо її на екран за допом функції show()
+    //Fill the matrix from the center in a spiral using the function spir () and display it on the screen using the function show ()
+    spir(a, pi, n);
+    show(a);
+
+    //Звільняємо пам'ять//Free up memory
+    free(pi);
+    return 0;
+}
+
+//Заповнення матриці від цетру по спіралі значеннями з pi//Filling the matrix from the center in a spiral with values of pi
+void spir(int A[t1][t2], int* H, int f)
+{
+    int t = 1, p = 1, j = 4, i = 4;
+    while (i > -1 && j > -1)
+    {
+        for (int temp = 0; temp < t ; temp++)//Вліво//Left
+        {
+            p++;
+            j = j--;
+            A[i][j] = H[p];
+        }
+
+        for (int temp = 0; temp < t ; temp++)//Вниз//Down
+        {
+            p++;
+            i++;
+            A[i][j] = H[p];
+        }
+
+        t++;
+        for (int temp = 0; temp < t ; temp++)//Вправо//Right
+        {
+            p++;
+            j = j++;
+            A[i][j] = H[p];
+        }
+
+        for (int temp = 0; temp < t ; temp++)//Вверх//Up
+        {
+            p++;
+            i--;
+            A[i][j] = H[p];
+        }
+        t++;
+        //Перевірка виконання циклу while//Check the execution of the while loop
+        if (p > f)
+            break;
+    }
+}
+
+//Функція виведення матриці на екран//Matrix display function
+void show(int A[t1][t2])
+{
+    printf("\nЗаповнена матриця від цетру по спіралі:\n\n");
+    for (int i = 0; i < t1-1; i++)
+    {
+        for (int j = 0; j < t2-1; j++)
+        {
+            if (j != t2-2)
+            {
+                if (A[i][j] >= 10)
+                    printf(" %i  ", A[i][j]);
+                else
+                    printf(" %i   ", A[i][j]);
+            }
+            else
+                printf("%i\n\n", A[i][j]);
+        }
+    }
+}
+
