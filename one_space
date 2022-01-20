@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <time.h>
+#include <Windows.h>
+#include <malloc.h>
+#include <iostream>
+using namespace std;
+
+
+const int N = 100;
+
+int main(void)
+{
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+    //Оголошення змінних і масивів//Declaring variables and arrays
+    int  t = 0;
+    char strin[100],afstrin[100];
+
+    //Сканування рядка від користувача
+    //Scan a string from the user
+    printf("Введіть текст(макс.100 cимволів): ");
+    gets_s(strin, sizeof(strin));
+    
+    printf("\nТекст після редагування: ");
+    
+    //Обробка рядка(видалення зайвих пробілів)
+    //Line processing (removing extra spaces)
+    for (int i = 0; i < sizeof(strin); i++)
+    {
+        if (strin[i] != ' ')
+        {
+           printf("%c", strin[i]);
+            t = 0;
+        }
+        else t++;
+        if (t == 1)
+            printf("%c", strin[i]);
+    //Перевірка на нульовий символ
+    //Check for zero character
+        if (strin[i] == '\0')
+            break;
+    }
+    printf("\n");
+}
