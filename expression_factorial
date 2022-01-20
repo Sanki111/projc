@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <math.h>
+
+float fact(float t);
+
+int main(void)
+{
+	//Оголошення змінних
+	//Declaring variables
+	float m, n;
+  
+  //Отримання даних від користувача
+  //Receiving data from the user
+	printf(" input n: ");
+	scanf_s("%f", &n);
+	printf(" input m: ");
+	scanf_s("%f", &m);
+
+  //Обчислення факторіалів
+  // Calculating of factorials
+	printf(" \nfact(n) = %f \n",fact(n));
+	printf(" \nfact(m) = %f \n",fact(m));
+	
+  //Обчислення заданого виразу
+  // Calculate a given expression
+	float value = (fact(n)*fact(m)) / (fact(m+n));
+	printf(" \nvalue =  %f \n",value);
+
+}
+
+//Функція обчислення факторіала
+//Factorial calculation function
+float fact(float t)
+{
+	float f = 1;
+	for (int i = 1; i <= t ; i++)
+	{
+		f = f * i;
+	}
+	return f;
+}
