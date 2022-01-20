@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <math.h>
+int main(void)
+{
+	//Оголошення змінних
+	//Declaring variables
+	float n, r, a, P, o, S;
+	printf(" input n: ");//Вводимо к-сть кутів правильного n-кутника
+	//Enter the number of angles of a right n-gon
+	scanf_s("%f", &n);//Зчитуємо змінну n
+	//Read the variable n
+	printf("input a: ");//Вводимо довжину сторони правильного n-кутника
+	//Enter the side length of a right n-gon
+	scanf_s("%f", &a);//Зчитуємо змінну a
+	//Read the variable a
+	printf("input r: ");//Вводимо радіус описаного кола
+	//Enter the radius of the circumscribed circle
+	scanf_s("%f", &r);//Зчитуємо змінну r
+	//Read the variable r
+	P = a * n;//Обчислюємо периметр за даною формулою
+	//Calculate the perimeter according to this formula
+	S = sin(3.1416 / n);
+	S = 2 * r * S;//Обчислюємо площу за даною формулою
+	//Calculate the area according to this formula
+	printf("P= %f \n", P);//Виводимо значення периметру на екран
+	//Display the value of the perimeter on the screen
+	printf("S= %f \n", S);//Виводимо значення площі на екран
+	//Display the value of the area on the screen
+	return 0;
+}
