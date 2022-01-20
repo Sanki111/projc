@@ -1,0 +1,37 @@
+#include "stdio.h"
+#include "math.h"
+
+
+int main(void)
+{
+	//Оголошення змінних
+	//Declaring variables
+	float R, a, S1, S2;
+	printf(" input a: ");//Вводимо довжину сторони квадрата
+	//Enter the side length of the square
+	scanf_s("%f", &a);//Зчитуємо змінну a
+	//Read the variable a
+	printf(" input R: ");//Вводимо радіус кола
+	//Enter the radius of the circle
+	scanf_s("%f", &R);//Зчитуємо змінну R
+	//Read the variable R
+
+	S1 = a * a;//Обчислюємо площу квадрата
+	//Calculate the area of the square
+	S2 = R * R * 3.141592653589793;//Обчислюємо площу круга
+	//Calculate the area of the circle
+	printf(" S of square: %f \n", S1);
+	printf(" S of circle: %f \n", S2);
+
+	if (S1 > S2)
+		//Порівняння двох площ
+		//Comparison of two areas
+	{
+		printf(" the area of a SQUARE is larger than that of a circle \n");
+	}
+	else
+	{
+		printf(" the area of a CIRCLE is larger than that of a square \n");
+	}
+	return 0;
+}
